@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <math.h>
+#define PI 3.14
 
 void gotoxy(int x, int y);
 void drawCoord(int weight, int width);
@@ -17,8 +18,8 @@ int main() {
     char MARK = '*';
     int width = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
     int weight = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    double xaxis = 10;
-    double yaxis = 20;
+    double xaxis = 3*PI;
+    double yaxis = 2.5;
     double xunit = xaxis / weight;
     double yunit = yaxis / width;
     //double yunit = xunit;
@@ -40,7 +41,6 @@ int main() {
         //printf("%d %d\n", x_tick, y_tick);
         if (x_tick>0 && x_tick <= weight && y_tick>0 && y_tick <= width)
         drawDot(x_tick, y_tick, MARK);
-        Sleep(50);
         
     }
 
@@ -77,6 +77,6 @@ void drawCoord(int weight, int width) {
 }
 
 double function(double x) {
-    double y = pow(x,2);
+    double y = sin(x);
     return y;
 }
